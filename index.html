@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainRot - Game Recommendation</title>
+  <!-- Custome CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BrainRot</a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="container mt-4">
+    <h1>Welcome to BrainRot</h1>
+    <p>This is a game recommendation website.</p>
+
+    <!-- Textbox for user input -->
+    <div class="mb-3">
+      <label for="gameDescription" class="form-label">Describe the game you want to be recommended:</label>
+      <textarea class="form-control" id="gameDescription" rows="3"></textarea>
+    </div>
+
+    <!-- Genre buttons -->
+    <h2>Select a Game Genre</h2>
+    <div class="row row-cols-3 g-4">
+      <!-- Row 1 -->
+      <div class="col">
+        <button class="btn btn-primary btn-lg btn-block genre-button">
+            <div class="genre-image action"></div>
+            Action
+        </button>
+          
+      </div>
+      <div class="col">
+        <button class="btn btn-secondary btn-lg btn-block">Adventure</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-success btn-lg btn-block">RPG</button>
+      </div>
+      <!-- Row 2 -->
+      <div class="col">
+        <button class="btn btn-danger btn-lg btn-block">Strategy</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-warning btn-lg btn-block">Puzzle</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-info btn-lg btn-block">Sports</button>
+      </div>
+      <!-- Row 3 -->
+      <div class="col">
+        <button class="btn btn-dark btn-lg btn-block">Simulation</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-light btn-lg btn-block">Horror</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary btn-lg btn-block">Racing</button>
+      </div>
+      <!-- Row 4 -->
+      <div class="col">
+        <button class="btn btn-secondary btn-lg btn-block">Shooter</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-success btn-lg btn-block">Platformer</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-danger btn-lg btn-block">Fighting</button>
+      </div>
+      <!-- Row 5 -->
+      <div class="col">
+        <button class="btn btn-warning btn-lg btn-block">Survival</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-info btn-lg btn-block">Indie</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-dark btn-lg btn-block">MMO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
