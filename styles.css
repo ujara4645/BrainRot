@@ -1,0 +1,76 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  /* Title and Description */
+  h1, p {
+    margin-bottom: 1em;
+  }
+  
+  /* Textbox */
+  textarea.form-control {
+    resize: vertical;
+    max-height: 300px;
+  }
+  
+  /* Genre Buttons */
+  .btn-block {
+    width: 100%;
+    height: 300px; /* Makes the buttons square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+  }
+  
+  /* Genre Buttons with Images */
+  .genre-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .genre-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in-out, border 0.3s ease-in-out;
+    z-index: -1;
+  }
+
+  .action {
+    background: url('images/action.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  /* .adventure {
+    background: url('images/adventure.jpg') no-repeat center center;
+    background-size: cover;
+  } */
+
+  /* Hover effects */
+  .genre-button:hover {
+    border: 3px solid #fff;
+  }
+
+  .genre-button:hover .genre-image {
+    opacity: 1;
+  }
+
+  
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .btn-block {
+      height: 150px;
+      font-size: 1.2em;
+    }
+  }
+  
