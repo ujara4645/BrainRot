@@ -1,6 +1,7 @@
 /* General styling */
-body {
+  body {
     font-family: Arial, sans-serif;
+    background-color:grey;
   }
   
   .container {
@@ -9,8 +10,9 @@ body {
   }
   
   /* Title and Description */
-  h1, p {
+  h1, p, h2, a, label{
     margin-bottom: 1em;
+    color: aliceblue;
   }
   
   /* Textbox */
@@ -19,52 +21,39 @@ body {
     max-height: 300px;
   }
   
-  /* Genre Buttons */
-  .btn-block {
-    width: 100%;
-    height: 300px; /* Makes the buttons square */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-  }
-  
   /* Genre Buttons with Images */
   .genre-button {
-    position: relative;
-    overflow: hidden;
+    background-color: cadetblue;
   }
 
   .genre-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    transition: opacity 0.3s ease-in-out, border 0.3s ease-in-out;
-    z-index: -1;
+    width: 30%;
   }
 
-  .action {
-    background: url('images/action.jpg') no-repeat center center;
-    background-size: cover;
-  }
-
-  /* .adventure {
-    background: url('images/adventure.jpg') no-repeat center center;
-    background-size: cover;
-  } */
-
-  /* Hover effects */
   .genre-button:hover {
-    border: 3px solid #fff;
+    background-color: darkcyan;
   }
 
-  .genre-button:hover .genre-image {
-    opacity: 1;
+  /* Submit Button */
+  .btn-block {
+    width: 100%;
+    font-size: 3em;
+    background-color: darkcyan;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+
   }
 
+  .btn-block:hover {
+    background-color: cadetblue;
+  } 
+
+  .textbox {
+    background-color:cadetblue;
+    color: black;
+  }
   
   /* Adjustments for smaller screens */
   @media (max-width: 768px) {
