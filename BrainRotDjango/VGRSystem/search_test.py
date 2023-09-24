@@ -26,11 +26,10 @@ s = Search().using(client)
 
 
 # Get first 20 hits for games that are in the Shooter genre and released before 2010
-# date_range = Q('range', release_date={'lt': '2020-01-01'})
 s = s.query('match', genres='Shooter')
-s = s.filter('range', **{'release_date':{'lt': '2020-01-01'}})
+s = s.filter('range', **{'release_date':{'lt': '2010-01-01'}})
 response = s.execute()
 s = s[10:30]
 
 for hit in s:
-    print(hit.release_date)
+    print(hit.title, hit.release_date)
