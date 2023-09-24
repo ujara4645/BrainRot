@@ -1,60 +1,36 @@
 from elasticsearch import Elasticsearch
-
+from elasticsearch_dsl import Search, MultiSearch, Q, Range
 
 # docker run --rm -p 9200:9200 -p 9300:9300 -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.7.0
 
-# Some setup stuff
-es = Elasticsearch("http://localhost:9200")
-es.indices.refresh(index="games")
+################ Setup ########################
+client = Elasticsearch("http://localhost:9200")
+s = Search().using(client)
 
 
-# Some example queries
-body = {
-    "query": {   
-        "terms": {
-            "genres": ["Adventure"]
-        }
-    }
-}
+################ Search queries ################
+# Get first 10 hits for games that are on either PS4 or PS5
+# s = s.filter('terms', platforms__keyword=['PlayStation 4', 'PlayStation 5'])
+# response = s.execute()
 
-# body = {
-#     "query": {
-#         "range": { 
-#             "release_date": {
-#                 "gte":"2012-12-01", 
-#                 "lte":"2012-12-31",
-#             }
-#         }
-#     }
-# }
-
-# body = {
-#     "query": {
-#         "bool": {
-#             "must": [
-#                 {
-#                     "match": {
-#                             "developers": "Naughty Dog"
-#                     }
-#                 },
-#                 { 
-#                     "range": {
-#                         "rating": {
-#                             "gte": 3
-#                         }
-#                     }
-#                 }
-#             ]
-#         }
-#     }
-# }
+# for hit in s:
+#     print(hit.title)
 
 
-# Execute the search (you might get a deprecation warning about the body parameter but it works)
-resp = es.search(index="games", body=body)
+# # Get all hits for games that are in the Adventure and Indie genres
+# s = s.query('match', genres='Adventure').query('match', genres='Indie')
+# response = s.execute()
 
-# Printing results
-print(resp)
-print(resp.body.keys())
-print(resp.body['hits']['hits'])
+# for hit in s.scan():
+#     print(hit.title)
 
+
+# Get first 20 hits for games that are in the Shooter genre and released before 2010
+# date_range = Q('range', release_date={'lt': '2020-01-01'})
+s = s.query('match', genres='Shooter')
+s = s.filter('range', **{'release_date':{'lt': '2020-01-01'}})
+response = s.execute()
+s = s[10:30]
+
+for hit in s:
+    print(hit.release_date)
