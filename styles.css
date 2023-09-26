@@ -62,3 +62,18 @@
     }
   }
   
+
+  #slider {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .ui-slider-handle {
+    width: 2em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  
