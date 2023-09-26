@@ -10,11 +10,11 @@ s = Search().using(client)
 
 ################ Search queries ################
 # Get first 10 hits for games that are on either PS4 or PS5
-s = s.filter('terms', platforms__keyword=['PlayStation 4', 'PlayStation 5'])
-response = s.execute()
+s = s.filter('terms', **{'platforms__keyword': ['PlayStation 4', 'PlayStation 5']})
+# response = s.execute()
 
-for hit in s:
-    print(hit.title)
+# for hit in s:
+#     print(hit.title)
 
 
 # # Get all hits for games that are in the Adventure and Indie genres
@@ -25,12 +25,12 @@ for hit in s:
 #     print(hit.title)
 
 
-# Get first 20 hits for games that are in the Shooter genre and released before 2010
-# s = s.query('match', genres='Shooter').filter('range', **{'release_date':{'lt': '2005-01-01'}})
+# Get 10-30 hits for games that are in the Shooter genre and released before 2010
+# s = s.query('match', genres='Shooter').query('range', **{'release_date':{'lt': '2010-01-01'}}).query('range', **{'rating':{'gt': 4}})
 
-# # s = s.filter('range', **{'release_date':{'lt': '2005-01-01'}})
-# response = s.execute()
-# s = s[10:30]
+response = s.execute()
+s = s[10:30]
 
-# for hit in s:
-#     print(hit.title, hit.release_date)
+
+for hit in s:
+    print(hit.title, hit.release_date, hit.rating)
