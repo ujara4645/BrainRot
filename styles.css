@@ -50,9 +50,8 @@
     background-color: cadetblue;
   } 
 
-  .textbox {
+  .textbox, .textbox:focus{
     background-color:cadetblue;
-    color: black;
   }
   
   /* Adjustments for smaller screens */
