@@ -26,7 +26,7 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
     match_args = {'title': title,
                   'summary': summary}
     
-    term_args = {'developers': (developers), 
+    term_args = {'developers': developers, 
                  'genres': genres,
                  'platforms': platforms}
 
@@ -60,10 +60,13 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
     # Execute query and get results
     response = s.execute()
     for hit in s.scan():
-        print(hit.genres, hit.rating, hit.plays, hit.release_date)
+        print(hit.title, hit.rating, hit.plays, hit.release_date)
+        # print(hit.title, hit.developers)
+
 
     return response
 
 search(genres=['Adventure'], rating=('gte', 3.5), plays=('lt', 10000), release_date=('gte', '2020-01-01'))
+# search(developers=['Naughty Dog'])
 
 
