@@ -17,15 +17,19 @@ $(document).ready(function() {
         });
         $('#genreSelection').append(button);
     });
-    
+
   // Initializing jQuery UI slider
+  var handle = $( "#custom-handle" );
   $("#slider").slider({
     create: function() {
-      $("#custom-handle").text($(this).slider("value"));
-    },
-    slide: function(event, ui) {
-      $("#custom-handle").text(ui.value);
-    }
+        handle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        handle.text( ui.value );
+      },
+      max: 5,
+      min: 0,
+      step: 0.1,
   });
 
   // Highlighting the selected genre button
