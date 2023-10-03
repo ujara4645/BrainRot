@@ -1,0 +1,173 @@
+/* General Body */
+
+/* ------------------ Section 1 ------------------ */
+
+.section1 {
+    width: 100vw;
+    height: 50vh;
+    background-color: #FFFFFF;
+    display: block;
+    padding: 6vh 4vw;
+    margin: 0vh;
+    overflow: hidden;
+}
+
+.greetingContainer {
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 2vh;
+}
+
+.Genshin {
+    background-color: #FFFFFF;
+    border: 1px solid #003049;
+    color: #003049;
+    padding: 2vh;
+    margin: 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    cursor: pointer;
+    border-radius: 24px;
+}
+
+.greeting {
+    color: #003049;
+    font-size: 8vh;
+    text-align: center;
+}
+
+.randomSuggestion {
+    background-color: #003049;
+    border: none;
+    color: #FCBF49;
+    padding: 2vh;
+    margin: 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    cursor: pointer;
+    border-radius: 24px;
+}
+
+/* ------------------ Section 2 ------------------ */
+
+.section2 {
+    width: 100vw;
+    height: 50vh;
+    background-color: #D62828;
+    padding: 1vh 0vw;
+    overflow: hidden;
+}
+
+.photoContainer {
+    width: inherit;
+    height: inherit;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.photo {
+    display: inline-block;
+    width: 20vw;
+    margin: 4vh 2vw;
+    padding: 0;
+}
+
+/* ------------------ Section 3 ------------------ */
+
+.section3 {
+    width: 100vw;
+    height: 50vh;
+    background-color: #003049;
+    text-align: left;
+    padding: 5vh 5vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.greeting2 {
+    color: #FCBF49;
+    vertical-align: middle;
+    font-size: 6vh;
+    margin: 4vh 0vw;
+}
+
+.greeting2subtext {
+    color: #FFFFFF;
+    width: 65vw;
+    font-size: 4vh;
+    margin: 4vh 0vw;
+    vertical-align: middle;
+}
+
+/* ------------------ Section 4 ------------------ */
+
+.section4 {
+    background-color: #D62828;
+    width: 100vw;
+    height: 50vh;
+    text-align: center;
+    overflow: hidden;
+    padding: 6vh 0vw;
+}
+
+.sec4Header {
+    color: #FCBF49;
+    vertical-align: middle;
+    font-size: 6vh;
+    margin: 4vh 0vw;
+}
+
+.sec4Header2 {
+    color: #FFFFFF;
+    font-size: 3vh;
+    margin: 4vh 0vw;
+    vertical-align: middle;
+}
+
+.survey{
+    background-color: #FFFFFF;
+    border: none;
+    color: #003049;
+    padding: 2vh;
+    margin: 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    cursor: pointer;
+    border-radius: 24px;
+}
+
+/* ------------------ Section 5 ------------------ */
+
+.section5 {
+    width: 100vw;
+    height: 70;
+    background-color: #003049;
+    text-align: left;
+    color: #FCBF49;
+    padding: 5vh 5vw;
+    font-size: 6vh;
+}
+
+.FAQChild {
+    color: #FFFFFF;
+    font-size: 2vh;
+    margin: 4vh 0vw;
+    vertical-align: middle;
+    margin: 2vh;
+}
+
+/* ------------------ Section 6 ------------------ */
+
+.section6 {
+    width: 100vw;
+    height: 0vh;
+    background-color: #003049;
+}
