@@ -48,4 +48,8 @@ $(document).ready(function() {
     
     // ... Perform further actions such as sending the data to the server ...
   });
+
+  $(".survey").on("click", function() {
+    window.location.href = "survey.html";
+  });
 });
