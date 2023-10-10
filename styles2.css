@@ -39,6 +39,20 @@
     text-align: center;
 }
 
+.survey1 {
+    background-color: #003049;
+    border: none;
+    color: #FCBF49;
+    padding: 2vh;
+    margin: 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    cursor: pointer;
+    border-radius: 24px;
+}
+
 .randomSuggestion {
     background-color: #003049;
     border: none;
@@ -130,7 +144,7 @@
     vertical-align: middle;
 }
 
-.survey{
+.survey2{
     background-color: #FFFFFF;
     border: none;
     color: #003049;
