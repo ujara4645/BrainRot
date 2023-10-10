@@ -1,7 +1,7 @@
 /* General styling */
   body {
     font-family: Arial, sans-serif;
-    background-color:grey;
+    background-color:#d62828;
   }
   
   .container {
@@ -23,7 +23,7 @@
   
   /* Genre Buttons with Images */
   .genre-button {
-    background-color: cadetblue;
+    background-color: #003049;
   }
 
   .genre-image {
@@ -31,15 +31,19 @@
   }
 
   .genre-button:hover {
-    background-color: darkcyan;
+    background-color: #005683;
+  }
+
+  #submit-button:hover {
+    color:#d62828
   }
 
   /* Submit Button */
   .btn-block {
     width: 100%;
     font-size: 3em;
-    background-color: darkcyan;
-    color: white;
+    background-color: #003049;
+    color: #fcbf49;
     text-align: center;
     vertical-align: middle;
     border: none;
@@ -47,11 +51,11 @@
   }
 
   .btn-block:hover {
-    background-color: cadetblue;
+    background-color: #ffffff;
   } 
 
   .textbox, .textbox:focus{
-    background-color:cadetblue;
+    background-color:#ffffff;
   }
   
   /* Adjustments for smaller screens */
