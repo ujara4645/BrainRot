@@ -1,0 +1,173 @@
+/* General styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color:grey;
+  }
+  
+  .container {
+    margin-top: 2em;/* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color:grey;
+    }
+    
+    .container {
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+    
+    /* Title and Description */
+    h1, p, h2, a, label{
+      margin-bottom: 1em;
+      color: aliceblue;
+    }
+    
+    /* Textbox */
+    textarea.form-control {
+      resize: vertical;
+      max-height: 300px;
+    }
+    
+    /* Genre Buttons with Images */
+    .genre-button {
+      background-color: cadetblue;
+    }
+  
+    .genre-image {
+      width: 30%;
+    }
+  
+    .genre-button:hover {
+      background-color: darkcyan;
+    }
+  
+    /* Submit Button */
+    .btn-block {
+      width: 100%;
+      font-size: 3em;
+      background-color: darkcyan;
+      color: white;
+      text-align: center;
+      vertical-align: middle;
+      border: none;
+  
+    }
+  
+    .btn-block:hover {
+      background-color: cadetblue;
+    } 
+  
+    .textbox, .textbox:focus{
+      background-color:cadetblue;
+    }
+    
+    /* Adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .btn-block {
+        height: 150px;
+        font-size: 1.2em;
+      }
+    }
+    
+  
+    #slider {
+      width: 60%;
+      margin: 0 auto;
+    }
+    
+    .ui-slider-handle {
+      width: 2em;
+      height: 1.6em;
+      top: 50%;
+      margin-top: -.8em;
+      text-align: center;
+      line-height: 1.6em;
+    }
+    
+    #custom-handle {
+      width: 3em;
+      height: 1.6em;
+      top: 50%;
+      margin-top: -.8em;
+      text-align: center;
+      line-height: 1.6em;
+    }
+    margin-bottom: 2em;
+  }
+  
+  /* Title and Description */
+  h1, p, h2, a, label{
+    margin-bottom: 1em;
+    color: aliceblue;
+  }
+  
+  /* Textbox */
+  textarea.form-control {
+    resize: vertical;
+    max-height: 300px;
+  }
+  
+  /* Genre Buttons with Images */
+  .genre-button {
+    background-color: cadetblue;
+  }
+
+  .genre-image {
+    width: 30%;
+  }
+
+  .genre-button:hover {
+    background-color: darkcyan;
+  }
+
+  /* Submit Button */
+  .btn-block {
+    width: 100%;
+    font-size: 3em;
+    background-color: darkcyan;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+
+  }
+
+  .btn-block:hover {
+    background-color: cadetblue;
+  } 
+
+  .textbox, .textbox:focus{
+    background-color:cadetblue;
+  }
+  
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .btn-block {
+      height: 150px;
+      font-size: 1.2em;
+    }
+  }
+  
+
+  #slider {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .ui-slider-handle {
+    width: 2em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  
+  #custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
