@@ -1,0 +1,91 @@
+/* General styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color:#d62828;
+  }
+  
+  .container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  /* Title and Description */
+  h1, p, h2, a, label{
+    margin-bottom: 1em;
+    color: aliceblue;
+  }
+  
+  /* Textbox */
+  textarea.form-control {
+    resize: vertical;
+    max-height: 300px;
+  }
+  
+  /* Genre Buttons with Images */
+  .genre-button {
+    background-color: #003049;
+  }
+
+  .genre-image {
+    width: 30%;
+  }
+
+  .genre-button:hover {
+    background-color: #005683;
+  }
+
+  #submit-button:hover {
+    color:#d62828
+  }
+
+  /* Submit Button */
+  .btn-block {
+    width: 100%;
+    font-size: 3em;
+    background-color: #003049;
+    color: #fcbf49;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+
+  }
+
+  .btn-block:hover {
+    background-color: #ffffff;
+  } 
+
+  .textbox, .textbox:focus{
+    background-color:#ffffff;
+  }
+  
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .btn-block {
+      height: 150px;
+      font-size: 1.2em;
+    }
+  }
+  
+
+  #slider {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .ui-slider-handle {
+    width: 2em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  
+  #custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
