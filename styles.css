@@ -35,7 +35,7 @@
   }
 
   #submit-button:hover {
-    color:#d62828
+    color:#fcbf49
   }
 
   /* Submit Button */
@@ -51,7 +51,7 @@
   }
 
   .btn-block:hover {
-    background-color: #ffffff;
+    background-color: #005683;
   } 
 
   .textbox, .textbox:focus{
