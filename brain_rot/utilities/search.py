@@ -59,15 +59,12 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
 
     # Execute query and get results
     response = s.execute()
-    for hit in s.scan():
-        print(hit.title, hit.rating, hit.plays, hit.release_date)
+    # for hit in s.scan():
+        # print(hit.title, hit.rating, hit.plays, hit.release_date)
         # print(hit.title, hit.developers)
 
 
     return response
 
-# if __name__ == '__main__':
-    # search(genres=['Adventure'], rating=('gte', 3.5), plays=('lt', 10000), release_date=('gte', '2020-01-01'))
-    # search(developers=['Naughty Dog'])
 
 

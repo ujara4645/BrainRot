@@ -5,15 +5,13 @@ from django.shortcuts import render
 from utilities import search
 
 def index(request):
-    template = loader.get_template("brain_rot_web/index.html")
-    context = {
-        
-    }
-    return HttpResponse(template.render(context, request))
+    # template = loader.get_template("brain_rot_web/index.html")
+    context = {}
+    return render(request, 'index.html', context)
 
 def results(request):
     
-    template = loader.get_template("brain_rot_web/results.html")
+    # template = loader.get_template("brain_rot_web/results.html")
     title = request.GET["title"]
     hits = search.search(title = title).hits
     results = {}
@@ -26,5 +24,5 @@ def results(request):
         
     context = {'results': results}
         
-    return render(request, 'brain_rot_web/results.html', context)
+    return render(request, 'results.html', context)
     
