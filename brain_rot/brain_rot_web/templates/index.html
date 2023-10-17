@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BrainRot - Game Recommendation</title>
+
+        <!-- Loading jQuery UI CSS -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        
+        <!-- Loading Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Loading Custom CSS -->
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+    <body>
+
+        <!-- Section 1 is the greeting section -->
+        <div class="section1">
+            <div class="greetingContainer">
+                <button class="Genshin">Not a Genshin Impact Advertisement</button>
+                <h1 class="greeting">Discover your next gaming adventure</h1>
+                <div class="greetingButtons">
+                    <a href="survey.html"><button class="survey1">Take the Survey</button></a>
+                    <a><button class="randomSuggestion">Get a suggestion</button></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2 is just photos -->
+        <div class="section2">
+            <div class="photoContainer">
+                <img src="images\fifa23.jpg" alt="Image 1" class="rounded photo">
+                <img src="images\FPS.jpg" alt="Image 2" class="rounded photo">
+                <img src="images\Racing.jpg" alt="Image 3" class="rounded photo">
+                <img src="images\skyrim.jpg" alt="Image 4" class="rounded photo">
+            </div>
+        </div>
+
+        <!-- Section 3 is just a general info section -->
+        <div class="section3">
+            <h1 class="greeting2">Welcome to *Name TBD*</h1>
+            <h4 class="greeting2subtext">Tired of scrolling through endless titles to find your perfect game?
+                 Our top-notch survey tailors customized game recommendations just for you!</h4>
+        </div>
+
+        <!-- Section 4 is the link to the survey -->
+        <div class="section4">
+            <h1 class="sec4Header">Ready, Set</h1>
+            <h5 class="sec4Header2">Embark on a journey like never before! Take our survey and watch as your gaming world expands.</h5>
+            <a href="survey.html"><button class="survey2">Take the Survey</button></a>
+        </div>
+
+        <!-- Section 5 is a FAQ section -->
+        <div class="section5">
+            <h1>FAQs</h1>
+            <div class="FAQParent">
+                <div class="FAQChild">
+                    <p>How does the survey work?</p>
+                    <p>We use a combination of machine learning and expert curation to analyze your answers and
+                         match your preferences with a variety of engaging and high-quality games.</p>
+                </div>
+                <div class="FAQChild">
+                    <p>Can I update my answers?</p>
+                    <p>Absolutely! You can always retake the survey or update your answers to receive a fresh set
+                         of personalized game suggestions.</p>
+                </div>
+                <div class="FAQChild">
+                    <p>How are games ranked?</p>
+                    <p>Our system generates a unique list of games, considering factors like game genre, gameplay
+                         depth, graphics quality, and user reviews to match your preferences.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5 is the footer, purely cosmetic -->
+        <div class="section6">
+            <img class="footerImage" src="" alt="">
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- Loading jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Loading Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>    
+    <!-- Loading Custom JS -->
+    <script src="{% static 'script.js' %}"></script>
+    </body>
+</html>
