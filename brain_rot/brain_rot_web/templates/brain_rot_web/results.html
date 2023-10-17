@@ -27,29 +27,26 @@
   </nav>
 
   <!-- Main Content Section -->
-  <form id="gameRecommendationForm" class="container mt-4 text-center">
-    <h1>Welcome to BrainRot</h1>
-    <p>This is a game recommendation website.</p>
-    
-    <!-- Genre Selection Section -->
-    <h2>Select a Game Genre</h2>
-    <div class="row row-cols-3 g-4" id="genreSelection"></div>
-
-    <!-- Minimum Price Slider Section -->
-    <h2 class="mt-4">Select a Minimum Rating</h2>
-    <div id="slider-container" class="row">
-      <div id="slider" class="col-2"></div>
-      <div class="col-1">
-        <div id="custom-handle" class="ui-slider-handle"></div>
-      </div>
-    </div>
-
-    <!-- User Input Textbox Section -->
-    <div class="mb-3 text-center">
-      <label for="gameDescription" class="form-label">Describe the game you want to be recommended:</label>
-      <textarea class="form-control textbox" id="gameDescription" name="gameDescription" rows="3"></textarea>
-      <button type="submit" class="btn btn-primary btn-lg btn-block mt-3" id="submit-button">Submit</button>     </div>
-  </form>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Recommendation results</h1>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-12">
+            <p class="text-center">Here are the games we recommend for you:</p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+            {% for r in results %}
+                <li class="list-group-item">{{ r.title }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        </div>
   
   <!-- Loading Scripts -->
   <!-- Loading jQuery -->

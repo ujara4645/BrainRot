@@ -66,8 +66,8 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
 
     return response
 
-if __name__ == '__main__':
-    search(genres=['Adventure'], rating=('gte', 3.5), plays=('lt', 10000), release_date=('gte', '2020-01-01'))
+# if __name__ == '__main__':
+    # search(genres=['Adventure'], rating=('gte', 3.5), plays=('lt', 10000), release_date=('gte', '2020-01-01'))
     # search(developers=['Naughty Dog'])
 
 
