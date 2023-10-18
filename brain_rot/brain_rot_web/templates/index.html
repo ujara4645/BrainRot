@@ -13,7 +13,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
         
         <!-- Loading Custom CSS -->
-        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" href="{% static 'styles_index.css' %}">
     </head>
 
     <body>
@@ -24,7 +24,7 @@
                 <button class="Genshin">Not a Genshin Impact Advertisement</button>
                 <h1 class="greeting">Discover your next gaming adventure</h1>
                 <div class="greetingButtons">
-                    <a href="survey.html"><button class="survey1">Take the Survey</button></a>
+                    <a href="/brain_rot/survey"><button class="survey1">Take the Survey</button></a>
                     <a><button class="randomSuggestion">Get a suggestion</button></a>
                 </div>
             </div>
@@ -33,12 +33,13 @@
         <!-- Section 2 is just photos -->
         <div class="section2">
             <div class="photoContainer">
-                <img src="images\fifa23.jpg" alt="Image 1" class="rounded photo">
-                <img src="images\FPS.jpg" alt="Image 2" class="rounded photo">
-                <img src="images\Racing.jpg" alt="Image 3" class="rounded photo">
-                <img src="images\skyrim.jpg" alt="Image 4" class="rounded photo">
+                <img src="{% static 'images/fifa23.jpg' %}" alt="Image 1" class="rounded photo">
+                <img src="{% static 'images/FPS.jpg' %}" alt="Image 2" class="rounded photo">
+                <img src="{% static 'images/Racing.jpg' %}" alt="Image 3" class="rounded photo">
+                <img src="{% static 'images/skyrim.jpg' %}" alt="Image 4" class="rounded photo">
             </div>
         </div>
+
 
         <!-- Section 3 is just a general info section -->
         <div class="section3">
@@ -51,7 +52,7 @@
         <div class="section4">
             <h1 class="sec4Header">Ready, Set</h1>
             <h5 class="sec4Header2">Embark on a journey like never before! Take our survey and watch as your gaming world expands.</h5>
-            <a href="survey.html"><button class="survey2">Take the Survey</button></a>
+            <a href="/brain_rot/survey"><button class="survey2">Take the Survey</button></a>
         </div>
 
         <!-- Section 5 is a FAQ section -->
