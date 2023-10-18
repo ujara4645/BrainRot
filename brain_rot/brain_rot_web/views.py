@@ -9,6 +9,11 @@ def index(request):
     context = {}
     return render(request, 'index.html', context)
 
+def survey(request):
+    # template = loader.get_template("brain_rot_web/index.html")
+    context = {}
+    return render(request, 'survey.html', context)
+
 def results(request):
     
     # template = loader.get_template("brain_rot_web/results.html")
