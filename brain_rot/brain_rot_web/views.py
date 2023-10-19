@@ -2,16 +2,18 @@ import string
 import random
 from django.template import loader
 from django.http import HttpResponse
-from django.shortcuts import render 
+from django.shortcuts import render
 from utilities import search
 
 # Renders the index page
+
 def index(request):
     # template = loader.get_template("brain_rot_web/index.html")
     context = {}
     return render(request, 'index.html', context)
 
 # Renders the survey page
+
 def survey(request):
     # template = loader.get_template("brain_rot_web/index.html")
     context = {}
@@ -19,9 +21,7 @@ def survey(request):
 
 # Renders the results page according to query parameters
 def results(request):
-    
     # template = loader.get_template("brain_rot_web/results.html")
-
     # Check if query is from the submit or random button
     if request.GET["query"] == 'form':
 
@@ -43,15 +43,26 @@ def results(request):
 
     # Create a dictionary of results to be passed to the template
     # (this is done because Django templates can't handle the ES response object)
+
     results = {}
+
     for hit in hits:
         results[hit.title] = {'Title': hit.title,
-                               'Rating': hit.rating, 
-                               'Plays': hit.plays, 
-                               'Release Date': hit.release_date,
-                               'Summary': hit.summary}
+                              'Rating': hit.rating,
+                              'Plays': hit.plays,
+                              'Release Date': hit.release_date,
+                              'Summary': hit.summary,
+                              'Id': hit.meta.id}
+
     context = {'results': results}
 
-    # Render the results page 
     return render(request, 'results.html', context)
-    
+
+
+def result_detail(request, game_id):
+    result = search.search_by_id(game_id)
+
+    context = {'result': result}
+
+    return render(request, 'result_details.html', context)
+

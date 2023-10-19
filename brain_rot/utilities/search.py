@@ -1,32 +1,32 @@
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import Search
+from elasticsearch_dsl import Search, Document
 import numbers
 
-# Tuples ("", 0) or ("", "") are (comparator, values) 
+
+# Tuples ("", 0) or ("", "") are (comparator, values)
 # e.g.: playing = ("lt", 1000) or release_date = ("gte", "2020-01-01")
 # TODO: change play, ..., reviews to passing in a comparison lambda
-def search(title="", rating=("", -1), developers=[], genres=[], summary="", platforms=[], 
+def search(title="", rating=("", -1), developers=[], genres=[], summary="", platforms=[],
            plays=("", -1), playing=("", -1), backlogs=("", -1), wishlist=("", -1), lists=("", -1),
-             reviews=("", -1), release_date=("", "")):
-    
+           reviews=("", -1), release_date=("", "")):
     # Setup connection to ES cluster
     client = Elasticsearch("http://localhost:9200")
     s = Search(using=client)
 
     # Organize arguments
     comparison_args = {'rating': rating,
-                        'plays': plays,
-                        'playing': playing,
-                        'backlogs': backlogs,
-                        'wishlist': wishlist,
-                        'lists': lists,
-                        'reviews': reviews,
-                        'release_date': release_date}
-    
+                       'plays': plays,
+                       'playing': playing,
+                       'backlogs': backlogs,
+                       'wishlist': wishlist,
+                       'lists': lists,
+                       'reviews': reviews,
+                       'release_date': release_date}
+
     match_args = {'title': title,
                   'summary': summary}
-    
-    term_args = {'developers': developers, 
+
+    term_args = {'developers': developers,
                  'genres': genres,
                  'platforms': platforms}
 
@@ -35,9 +35,9 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
         comp_val = comparison_args[comp_key]
         if comp_val[0]:
             if isinstance(comp_val[1], numbers.Number) and comp_val[1] > 0:
-                s = s.query('range', **{comp_key:{comp_val[0]: comp_val[1]}})
+                s = s.query('range', **{comp_key: {comp_val[0]: comp_val[1]}})
             else:
-                s = s.query('range', **{comp_key:{comp_val[0]: comp_val[1]}})
+                s = s.query('range', **{comp_key: {comp_val[0]: comp_val[1]}})
 
     # Loop over term arguments, check if it's valid, if there's 1 or more than 1, and add to query
     for term_key in term_args.keys():
@@ -55,16 +55,17 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
 
         if match_val:
             s = s.query('match', **{match_key: match_val})
-            
 
     # Execute query and get results
     response = s.execute()
     # for hit in s.scan():
-        # print(hit.title, hit.rating, hit.plays, hit.release_date)
-        # print(hit.title, hit.developers)
-
+    # print(hit.title, hit.rating, hit.plays, hit.release_date)
+    # print(hit.title, hit.developers)
 
     return response
 
 
-
+def search_by_id(id):
+    client = Elasticsearch("http://localhost:9200")
+    results = Document().get(id=id, index='games', using=client)
+    return results.to_dict()
