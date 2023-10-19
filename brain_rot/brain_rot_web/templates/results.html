@@ -13,7 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
   
   <!-- Loading Custom CSS -->
-  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="{% static 'styles_survey.css' %}">
 </head>
 <body>
 
@@ -39,8 +39,9 @@
         <div class="row">
         <div class="col-12">
             <ul class="list-group">
-            {% for r in results %}
-                <li class="list-group-item">{{ r.title }}</li>
+            {% for k, v in results.items %}
+                <li class="list-group-item"><b>{{ k }} ({{ v.Rating }}/5) </b></li>
+                <li class="list-group-item">{{ v.Summary }}</li>
             {% endfor %}
             </ul>
         </div>

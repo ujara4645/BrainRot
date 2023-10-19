@@ -17,15 +17,17 @@ def survey(request):
 def results(request):
     
     # template = loader.get_template("brain_rot_web/results.html")
-    title = request.GET["title"]
-    hits = search.search(title = title).hits
+    summary = request.GET["desc"]
+    rating = ('gte', float(request.GET["rating"]))
+    hits = search.search(summary=summary, rating=rating).hits
     results = {}
     
     for hit in hits:
         results[hit.title] = {'Title': hit.title,
                                'Rating': hit.rating, 
                                'Plays': hit.plays, 
-                               'Release Date': hit.release_date}
+                               'Release Date': hit.release_date,
+                               'Summary': hit.summary}
         
     context = {'results': results}
         
