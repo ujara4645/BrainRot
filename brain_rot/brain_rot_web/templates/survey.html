@@ -26,7 +26,9 @@
   </nav>
 
   <!-- Main Content Section -->
-  <form id="gameRecommendationForm" class="container mt-4 text-center">
+  <form id="gameRecommendationForm" class="container mt-4 text-center" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
     <h1>Welcome to BrainRot</h1>
     <p>This is a game recommendation website.</p>
     
@@ -47,8 +49,10 @@
     <div class="mb-3 text-center">
       <label for="gameDescription" class="form-label">Describe the game you want to be recommended:</label>
       <textarea class="form-control textbox" id="gameDescription" name="gameDescription" rows="3"></textarea>
-      <button type="submit" class="btn btn-primary btn-lg btn-block mt-3" id="submit-button"> Submit</button> 
+      <button type="submit" class="btn btn-primary btn-lg btn-block mt-3" id="submit-button" name="button-type" value="search"> Submit</button> 
+      <button type="submit" class="btn btn-primary btn-lg btn-block mt-3" id="random-button" name="button-type" value="random"> I'm Feeling Lucky</button> 
     </div>
+
   </form>
   
   <!-- Loading Scripts -->

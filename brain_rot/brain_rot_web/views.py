@@ -1,4 +1,6 @@
 import json
+import string
+import random
 from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import render 
@@ -17,9 +19,18 @@ def survey(request):
 def results(request):
     
     # template = loader.get_template("brain_rot_web/results.html")
-    summary = request.GET["desc"]
-    rating = ('gte', float(request.GET["rating"]))
-    hits = search.search(summary=summary, rating=rating).hits
+
+    if request.POST.get('button-type') == 'search':
+        summary = request.GET["desc"]
+        rating = ('gte', float(request.GET["rating"]))
+        hits = search.search(summary=summary, rating=rating).hits
+    
+    elif request.POST.get('button-type') == 'random':
+        rand_str = random.choices(string.ascii_lowercase, k=5)
+        hits = []
+        for c in rand_str:
+            hits.append(search.search(summary=c, rating=rating).hits[0])
+
     results = {}
     
     for hit in hits:

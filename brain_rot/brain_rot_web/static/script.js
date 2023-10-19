@@ -50,6 +50,9 @@ $(document).ready(function() {
     document.getElementById("submit-button").onclick = function () {
       location.href = "http://localhost:8000/brain_rot/results?desc="+gameDescription+"&rating="+minimumRating; //the page to redirect
     };
+    document.getElementById("random-button").onclick = function () {
+      location.href = "http://localhost:8000/brain_rot/results"; //the page to redirect
+    };
 
   });
 });
