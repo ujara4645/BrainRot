@@ -40,7 +40,7 @@
         <div class="col-12">
             <ul class="list-group">
             {% for k, v in results.items %}
-                <li class="list-group-item"><b>{{ k }}({{ v.Rating }}/5) &emsp;<a href="/brain_rot/results/{{ v.Id }}">Details</a></b></li>
+                <li class="list-group-item"><b>{{ k }}({{ v.Rating }}/5) &emsp;<a href="/results/{{ v.Id }}">Details</a></b></li>
                 <li class="list-group-item">{{ v.Summary }}</li>
             {% endfor %}
             </ul>
