@@ -43,12 +43,12 @@ $(document).ready(function() {
     e.preventDefault();
 
     const selectedGenre = $(".btn-selected").val();
-    const minimumPrice = $("#slider").slider("value");
+    const minimumRating = $("#slider").slider("value");
     const gameDescription = $("#gameDescription").val();
 
     // ... Perform further actions such as sending the data to the server ...
     document.getElementById("submit-button").onclick = function () {
-      location.href = "http://localhost:8000/brain_rot/results?title="+gameDescription; //the page to redirect
+      location.href = "http://localhost:8000/brain_rot/results?desc="+gameDescription+"&rating="+minimumRating; //the page to redirect
     };
 
   });
