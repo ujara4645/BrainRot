@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('brain_rot/', include('brain_rot_web.urls')),
+    path('', include('brain_rot_web.urls')),
     path('admin/', admin.site.urls),
 ]

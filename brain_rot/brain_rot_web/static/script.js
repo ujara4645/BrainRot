@@ -48,10 +48,10 @@ $(document).ready(function() {
 
     // ... Perform further actions such as sending the data to the server ...
     document.getElementById("submit-button").onclick = function () {
-      location.href = "http://localhost:8000/brain_rot/results?query=form&desc="+gameDescription+"&rating="+minimumRating; //the page to redirect
+      location.href = "/results?query=form&desc="+gameDescription+"&rating="+minimumRating; //the page to redirect
     };
     document.getElementById("random-button").onclick = function () {
-      location.href = "http://localhost:8000/brain_rot/results?query=random"; //the page to redirect
+      location.href = "/results?query=random"; //the page to redirect
     };
 
   });
