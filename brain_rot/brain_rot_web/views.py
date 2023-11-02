@@ -30,7 +30,7 @@ def results(request):
         rating = ('gte', float(request.GET["rating"]))
 
         # Execute search
-        hits = search.search(summary=summary, rating=rating).hits
+        hits = search.search(summary=summary, rating=rating)
     
     elif request.GET["query"] == 'random':
 

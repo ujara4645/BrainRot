@@ -1,9 +1,7 @@
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import Search, Document, Q
-from elasticsearch_dsl.query import MoreLikeThis
+from elasticsearch_dsl import Search, Document
 import numbers
 import requests
-import urllib3
 import json
 
 # Tuples ("", 0) or ("", "") are (comparator, values)
@@ -60,9 +58,15 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
             s = s.query('match', **{match_key: match_val})
         
     # Execute query and get results
-    response = s.execute()
+    if not summary and rating == ('gte', 0.0):
+        s = s.query('match', **{'title': 'Genshin Impact'})
+        response = s.execute()
+        hits = [response.hits[0], response.hits[0], response.hits[0], response.hits[0], response.hits[0]]      
+    else:
+        response = s.execute()
+        hits = response.hits
 
-    return response
+    return hits
 
 
 def search_by_id(id):
@@ -71,43 +75,26 @@ def search_by_id(id):
     return results.to_dict()
 
 
-def search_more_like_this(id, title='', genres='', summary='', rating=-1):
-    client = Elasticsearch("http://localhost:9200")
-    s = Search(using=client)
-    fields = []
+def search_more_like_this(id):
+    fields = ['summary', 'genres', 'title']
 
-    if title:
-        fields.append('title')
+    query = {
+        'query': {
+            'more_like_this': {
+                'fields': fields, 
+                'like': {'_index': 'games', '_id': id},
+                "min_term_freq": 1
+                }
+            }
+        }
+    query = json.dumps(query)   
 
-    if genres:
-        fields.append('genres')
+    response = requests.get(url='http://localhost:9200/games/_search', data=query, headers={'content-type':'application/json'})    
+    hits = json.loads(response.text)['hits']['hits'][:5]
+    hits = [{'title': h['_source']['title'], 'genres': h['_source']['genres'], 'summary': h['_source']['summary']} for h in hits]
+    return hits
 
-    if summary:
-        fields.append('summary')
 
-    if rating > 0:  
-        fields.append('rating')
-
-    like_doc = ' '.join([title, summary])
-    if genres:
-        like_doc += ' '.join(genres)
-
-    fields = ['genres', 'title', 'summary']
-    # query = {'more_like_this': {'fields': fields, 'like': {'_index': 'games', '_id': id}}}
-    query = {'query': {'more_like_this': {'fields': fields, 'like': {'_index': 'games', '_id': id}}}}
-    
-    # response = client.search(index='games', body=query)
-    response = requests.get('http://localhost:9200/games/_search', params=query, headers={'content-type':'application/json'})
-    # response = client.search(index='games', query=query)
-    # response = s.query(MoreLikeThis(fields=fields, like={'_index': 'games', '_id': id})).execute()
-    # response = s.query(query).execute()
-
-    return response
-
-# hits = search_more_like_this(id='10')['hits']['hits']
-# hits = search_more_like_this(id='10').hits
-hits = search_more_like_this(id='10')
-print('More like this:')
-print(hits.text, hits.status_code)
-# for hit in hits:
-#     print(hit)
+# hits = search_more_like_this(id=10)
+# for h in hits:
+#     print(h['title'], h['genres'])

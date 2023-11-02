@@ -40,8 +40,15 @@
         <div class="col-12">
             <ul class="list-group">
             {% for k, v in results.items %}
+              {% if k == 'Genshin Impact' %}
+                {% for i in '0123456789'|make_list %}
+                  <li class="list-group-item"><b>{{ k }}({{ v.Rating }}/5) &emsp;<a href="/results/{{ v.Id }}">Details</a></b></li>
+                  <li class="list-group-item">{{ v.Summary }}</li>
+                {% endfor %}
+              {% else %}
                 <li class="list-group-item"><b>{{ k }}({{ v.Rating }}/5) &emsp;<a href="/results/{{ v.Id }}">Details</a></b></li>
                 <li class="list-group-item">{{ v.Summary }}</li>
+              {% endif %}
             {% endfor %}
             </ul>
         </div>
