@@ -21,18 +21,6 @@
     max-height: 300px;
   }
   
-  /* Genre Buttons with Images */
-  .genre-button {
-    background-color: #003049;
-  }
-
-  .genre-image {
-    width: 30%;
-  }
-
-  .genre-button:hover {
-    background-color: #005683;
-  }
 
   #submit-button:hover {
     color:#fcbf49
@@ -90,3 +78,85 @@
     text-align: center;
     line-height: 1.6em;
   }
+
+.genre-container {
+  background-color: #FFFFFF;
+}
+
+.genre-container h2 {
+  color: #003049;
+}
+
+.cat1-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.plat-container {
+  background-color: #003049;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cat2-container {
+  background-color: #003049;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 50vw;
+}
+
+.cat{
+  background-color: #104068;
+  border-radius: 4px;
+  border: 1px solid #FFFFFF;
+  overflow: hidden;
+  margin: 2vh 2vw;
+  width: 10vw;
+  height: 8vh;
+}
+
+.cat label {
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.cat label span {
+  text-align: center;
+  font-size: 2vh;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.cat label input {
+  position: absolute;
+  display: none;
+  color: #FFFFFF;
+}
+
+/* selects all of the text within the input element and changes the color of the text */
+.cat label input + span{
+  color: #FFFFFF;
+}
+
+/* This will declare how a selected input will look giving generic properties */
+.cat input:checked + span {
+  color: #FFFFFF;
+  background-color: #FCBF49;
+}
+
+#slider-container {
+  text-align: center;
+  vertical-align: middle;
+  width: 100vw;
+  height: 25vh;
+}
+
+#slider-container h2 {
+  color:#003049
+}
+
