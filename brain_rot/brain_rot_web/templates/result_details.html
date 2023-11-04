@@ -28,23 +28,46 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-12">
-            <h1 class="text-center">{{ result.Title }}</h1>
+            <h1 class="text-center">{{ title }}</h1>
         </div>
         </div>
         <div class="row">
         <div class="col-12">
             <ul class="list-group">
-                <li class="list-group-item"><b>Title: {{ result.title }}</b></li>
-                <li class="list-group-item">Rating {{ result.rating }}</li>
-                <li class="list-group-item">Developers {{ result.developers }}</li>
-                <li class="list-group-item">Summary: {{ result.summary }}</li>
-                <li class="list-group-item">Platforms: {{ result.platforms }}</li>
-                <li class="list-group-item">Plays: {{ result.plays }}</li>
-                <li class="list-group-item">Playing: {{ result.playing }}</li>
-                <li class="list-group-item">Backlogs: {{ result.backlogs }}</li>
+                <li class="list-group-item"><b>{{ title }} ({{ rating }}/5) &emsp;</b></li>
+                <li class="list-group-item">{{ summary }}</li>
+                <li class="list-group-item">Platforms: {% for p in platforms %}{{ p }}, {% endfor %}</li>
+                <li class="list-group-item">Developers: {% for d in developers %}{{ d }}, {% endfor %}</li>
+                <li class="list-group-item">Plays: {{ plays }}</li>
+                <li class="list-group-item">Playing: {{ playing }}</li>
+                <li class="list-group-item">Backlogs: {{ backlogs }}</li>
             </ul>
         </div>
         </div>
+    </div>
+    <br><br>
+    <!-- Similar Section -->
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col-12">
+          <h1 class="text-center">Similar games</h1>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-12">
+          <p class="text-center">Here are games similar to the one you're looking at:</p>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-12">
+          <ul class="list-group">
+          {% for g in similar %}
+            <li class="list-group-item"><b>{{ g.title }} ({{ g.rating }}/5) &emsp;<a href="/results/{{ g.id }}">Details</a></b></li>
+            <li class="list-group-item">{{ g.summary }}</li>
+          {% endfor %}
+          </ul>
+      </div>
+      </div>
     </div>
 
   <!-- Loading Scripts -->

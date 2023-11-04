@@ -8,16 +8,6 @@ $(document).ready(function() {
     'Quiz/Trivia', 'Pinball'
   ];
 
-  // Generating buttons dynamically
-  genres.forEach((genre) => {
-      let button = $('<input/>', {
-          type: 'button',
-          class: 'btn btn-dark btn-lg col genre-button',
-          value: genre
-      });
-      $('#genreSelection').append(button);
-  });
-
   // Initializing jQuery UI slider
   var handle = $( "#custom-handle" );
   $("#slider").slider({
@@ -32,23 +22,38 @@ $(document).ready(function() {
     step: 0.1,
   });
 
-  // Highlighting the selected genre button
-  $(".genre-button").on("click", function() {
-    $(".genre-button").removeClass("btn-selected"); // Assuming btn-selected is a class that highlights the button
-    $(this).addClass("btn-selected");
-  });
+  function get_Checked_Values(checkboxName) {
+    var checkboxes = document.getElementsByName(checkboxName);
+    result = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        result.push(checkboxes[i].value);
+      }
+    }
+    ret = "";
+    if (result.length > 1) {
+      for (var i = 0; i < result.length - 2; i++) {
+        ret += result[i] + "+";
+      }
+      ret += result[result.length - 1];
+    } else if (result.length == 1) {
+      ret += result[0];
+    }
+    return ret;
+  }
 
   // Form submission
   $("#gameRecommendationForm").submit(function(e) {
     e.preventDefault();
 
-    const selectedGenre = $(".btn-selected").val();
+    const selectedGenres = get_Checked_Values('genre-cbx');
+    const selectedPlats = get_Checked_Values('plat-cbx');
     const minimumRating = $("#slider").slider("value");
     const gameDescription = $("#gameDescription").val();
 
     // ... Perform further actions such as sending the data to the server ...
     document.getElementById("submit-button").onclick = function () {
-      location.href = "/results?query=form&desc="+gameDescription+"&rating="+minimumRating; //the page to redirect
+      location.href = "/results?query=form&desc="+gameDescription+"&rating="+minimumRating+"&genres="+selectedGenres+"&platforms="+selectedPlats; //the page to redirect
     };
     document.getElementById("random-button").onclick = function () {
       location.href = "/results?query=random"; //the page to redirect

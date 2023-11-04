@@ -1,7 +1,8 @@
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search, Document
 import numbers
-
+import requests
+import json
 
 # Tuples ("", 0) or ("", "") are (comparator, values)
 # e.g.: playing = ("lt", 1000) or release_date = ("gte", "2020-01-01")
@@ -55,17 +56,48 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
 
         if match_val:
             s = s.query('match', **{match_key: match_val})
-
+        
     # Execute query and get results
-    response = s.execute()
-    # for hit in s.scan():
-    # print(hit.title, hit.rating, hit.plays, hit.release_date)
-    # print(hit.title, hit.developers)
+    if not summary and rating == ('gte', 0.0):
+        s = s.query('match', **{'title': 'Genshin Impact'})
+        response = s.execute()
+        hits = [response.hits[0], response.hits[0], response.hits[0], response.hits[0], response.hits[0]]      
+    else:
+        response = s.execute()
+        hits = response.hits
 
-    return response
+    return hits
 
 
+# Returns a single result based on id
 def search_by_id(id):
     client = Elasticsearch("http://localhost:9200")
     results = Document().get(id=id, index='games', using=client)
     return results.to_dict()
+
+
+# Returns similar results based on id using ES's MoreLikeThis query
+def search_more_like_this(id):
+    fields = ['summary', 'genres', 'title']
+
+    query = {
+        'query': {
+            'more_like_this': {
+                'fields': fields, 
+                'like': {'_index': 'games', '_id': id},
+                "min_term_freq": 1
+                }
+            }
+        }
+    query = json.dumps(query)   
+
+    response = requests.get(url='http://localhost:9200/games/_search', data=query, headers={'content-type':'application/json'})    
+    hits = json.loads(response.text)['hits']['hits'][:5]
+    hits = [{
+        'id': h['_id'],
+        'title': h['_source']['title'], 
+        'genres': h['_source']['genres'], 
+        'summary': h['_source']['summary'],
+        'rating': h['_source']['rating']
+        } for h in hits]
+    return hits

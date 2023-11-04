@@ -6,22 +6,21 @@ from django.shortcuts import render
 from utilities import search
 
 # Renders the index page
-
 def index(request):
     # template = loader.get_template("brain_rot_web/index.html")
     context = {}
     return render(request, 'index.html', context)
 
-# Renders the survey page
 
+# Renders the survey page
 def survey(request):
     # template = loader.get_template("brain_rot_web/index.html")
     context = {}
     return render(request, 'survey.html', context)
 
+
 # Renders the results page according to query parameters
 def results(request):
-    # template = loader.get_template("brain_rot_web/results.html")
     # Check if query is from the submit or random button
     if request.GET["query"] == 'form':
 
@@ -30,7 +29,7 @@ def results(request):
         rating = ('gte', float(request.GET["rating"]))
 
         # Execute search
-        hits = search.search(summary=summary, rating=rating).hits
+        hits = search.search(summary=summary, rating=rating)
     
     elif request.GET["query"] == 'random':
 
@@ -39,11 +38,10 @@ def results(request):
         rand_str = random.choices(string.ascii_lowercase, k=5)
         hits = []
         for c in rand_str:
-            hits.append(search.search(summary=c).hits[0])
+            hits.append(search.search(summary=c)[0])
 
     # Create a dictionary of results to be passed to the template
     # (this is done because Django templates can't handle the ES response object)
-
     results = {}
 
     for hit in hits:
@@ -55,14 +53,14 @@ def results(request):
                               'Id': hit.meta.id}
 
     context = {'results': results}
-
     return render(request, 'results.html', context)
 
 
+# Used to pass a single result to the template
 def result_detail(request, game_id):
-    result = search.search_by_id(game_id)
-
-    context = {'result': result}
+    context = search.search_by_id(game_id)
+    similar_games = search.search_more_like_this(game_id)
+    context['similar'] = similar_games
 
     return render(request, 'result_details.html', context)
 
