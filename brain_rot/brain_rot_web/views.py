@@ -39,7 +39,7 @@ def results(request):
         rand_str = random.choices(string.ascii_lowercase, k=5)
         hits = []
         for c in rand_str:
-            hits.append(search.search(summary=c).hits[0])
+            hits.append(search.search(summary=c)[0])
 
     # Create a dictionary of results to be passed to the template
     # (this is done because Django templates can't handle the ES response object)
