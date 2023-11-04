@@ -69,12 +69,14 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
     return hits
 
 
+# Returns a single result based on id
 def search_by_id(id):
     client = Elasticsearch("http://localhost:9200")
     results = Document().get(id=id, index='games', using=client)
     return results.to_dict()
 
 
+# Returns similar results based on id using ES's MoreLikeThis query
 def search_more_like_this(id):
     fields = ['summary', 'genres', 'title']
 
@@ -91,10 +93,11 @@ def search_more_like_this(id):
 
     response = requests.get(url='http://localhost:9200/games/_search', data=query, headers={'content-type':'application/json'})    
     hits = json.loads(response.text)['hits']['hits'][:5]
-    hits = [{'title': h['_source']['title'], 'genres': h['_source']['genres'], 'summary': h['_source']['summary']} for h in hits]
+    hits = [{
+        'id': h['_id'],
+        'title': h['_source']['title'], 
+        'genres': h['_source']['genres'], 
+        'summary': h['_source']['summary'],
+        'rating': h['_source']['rating']
+        } for h in hits]
     return hits
-
-
-# hits = search_more_like_this(id=10)
-# for h in hits:
-#     print(h['title'], h['genres'])
