@@ -47,6 +47,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     const selectedGenres = get_Checked_Values('genre-cbx');
+    console.log(selectedGenres);
     const selectedPlats = get_Checked_Values('plat-cbx');
     const minimumRating = $("#slider").slider("value");
     const gameDescription = $("#gameDescription").val();

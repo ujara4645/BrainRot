@@ -27,7 +27,10 @@ def results(request):
         # Get summary and rating from the form
         summary = request.GET["desc"]
         rating = ('gte', float(request.GET["rating"]))
+        genres = request.GET["genres"]
+        platforms = request.GET["platforms"]
 
+        print(request)
         # Execute search
         hits = search.search(summary=summary, rating=rating)
     
@@ -36,6 +39,8 @@ def results(request):
         # Genrate 5 random characters, do a search based on each char, 
         # and save the first result of each search into the results to be displayed
         rand_str = random.choices(string.ascii_lowercase, k=5)
+        # rand_ids = [random.randint(0, 15000) for _ in range(5)]
+
         hits = []
         for c in rand_str:
             hits.append(search.search(summary=c)[0])

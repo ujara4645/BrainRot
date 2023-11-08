@@ -62,7 +62,7 @@
       <div class="col-12">
           <ul class="list-group">
           {% for g in similar %}
-            <li class="list-group-item"><b>{{ g.title }} ({{ g.rating }}/5) &emsp;<a href="/results/{{ g.id }}">Details</a></b></li>
+            <li class="list-group-item"><b>{{ g.title }} ({{ g.rating }}/5) &emsp;<a style="color: black;"  href="/results/{{ g.id }}">Details</a></b></li>
             <li class="list-group-item">{{ g.summary }}</li>
           {% endfor %}
           </ul>
