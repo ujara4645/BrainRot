@@ -24,11 +24,9 @@ $(document).ready(function() {
 
   function get_Checked_Values(checkboxName) {
     var checkboxes = document.getElementsByName(checkboxName);
-    result = [];
     ret = "";
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
-        // result.push(checkboxes[i].value);
         ret += checkboxes[i].value;
         if (i != checkboxes.length - 1) {
           ret += "+";

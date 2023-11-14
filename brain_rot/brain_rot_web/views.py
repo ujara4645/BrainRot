@@ -34,36 +34,7 @@ def results(request):
         results = search.search(summary=summary, rating=rating, genres=genres, platforms=platforms)
     
     elif request.GET["query"] == 'random':
-
-        # Genrate 5 random characters, do a search based on each char, 
-        # and save the first result of each search into the results to be displayed
-        # rand_str = random.choices(string.ascii_lowercase, k=5)
-        rand_ids = [random.randint(0, 15000) for _ in range(5)]
-
-        hits = []
-        # for c in rand_str:
-        #     hits.append(search.search(summary=c)[0])
-        for i in rand_ids:
-            hits.append(search.search_by_id(i))
-
-        for hit in hits:
-            results[hit['Title']] = hit['Title']
-            results[hit['Rating']] = hit['Rating']
-            results[hit['Plays']] = hit['Plays']
-            results[hit['Release Date']] = hit['Release Date']
-            results[hit['Summary']] = hit['Summary']
-            results[hit['Id']] = hit['Id']
-
-    # Create a dictionary of results to be passed to the template
-    # (this is done because Django templates can't handle the ES response object)
-
-    # for hit in hits:
-    #     results[hit.title] = {'Title': hit.title,
-    #                           'Rating': hit.rating,
-    #                           'Plays': hit.plays,
-    #                           'Release Date': hit.release_date,
-    #                           'Summary': hit.summary,
-    #                           'Id': hit.meta.id}
+        results = search.random_search()
 
     context = {'results': results}
     return render(request, 'results.html', context)

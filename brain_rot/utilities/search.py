@@ -3,6 +3,7 @@ from elasticsearch_dsl import Search, Document
 import numbers
 import requests
 import json
+import random
 
 # Tuples ("", 0) or ("", "") are (comparator, values)
 # e.g.: playing = ("lt", 1000) or release_date = ("gte", "2020-01-01")
@@ -84,6 +85,24 @@ def search_by_id(id):
     results = Document().get(id=id, index='games', using=client)
     return results.to_dict()
 
+def random_search():
+    rand_ids = [random.randint(0, 10000) for _ in range(5)]
+    hits = []
+    results = {}
+
+    for i in rand_ids:
+        hits.append(search_by_id(i))
+
+    for i in range(len(hits)):
+        hit = hits[i]
+        results[hit['title']] = {'Title': hit['title'],
+                                    'Rating': hit['rating'],
+                                    'Plays': hit['plays'],
+                                    'Release Date': hit['release_date'],
+                                    'Summary': hit['summary'],
+                                    'Id': rand_ids[i]}
+        
+    return results
 
 # Returns similar results based on id using ES's MoreLikeThis query
 def search_more_like_this(id):
