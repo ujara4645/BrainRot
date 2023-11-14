@@ -66,7 +66,16 @@ def search(title="", rating=("", -1), developers=[], genres=[], summary="", plat
         response = s.execute()
         hits = response.hits
 
-    return hits
+    results = {}
+    for hit in hits:
+        results[hit.title] = {'Title': hit.title,
+                                'Rating': hit.rating,
+                                'Plays': hit.plays,
+                                'Release Date': hit.release_date,
+                                'Summary': hit.summary,
+                                'Id': hit.meta.id}
+
+    return results
 
 
 # Returns a single result based on id

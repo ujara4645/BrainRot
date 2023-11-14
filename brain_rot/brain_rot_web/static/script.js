@@ -35,35 +35,28 @@ $(document).ready(function() {
         }
       }
     }
-    // ret = "";
-    // if (result.length > 1) {
-    //   for (var i = 0; i < result.length - 1; i++) {
-    //     ret += result[i] + "+";
-    //   }
-    //   ret += result[result.length - 1];
-    // } else if (result.length == 1) {
-    //   ret += result[0];
-    // }
     return ret;
   }
+
+  function normal_results() {
+    const selectedGenres = get_Checked_Values('genre-cbx');
+    const selectedPlats = get_Checked_Values('plat-cbx');
+    const minimumRating = $("#slider").slider("value");
+    const gameDescription = $("#gameDescription").val();
+    location.href = "/results?query=form&desc="+gameDescription+"&rating="+minimumRating+"&genres="+selectedGenres+"&platforms="+selectedPlats; //the page to redirect
+  }
+
+  function random_results() {
+    location.href = "/results?query=random"; //the page to redirect
+  } 
 
   // Form submission
   $("#gameRecommendationForm").submit(function(e) {
     e.preventDefault();
-
-
-
-    // ... Perform further actions such as sending the data to the server ...
-    document.getElementById("submit-button").onclick = function () {
-      const selectedGenres = get_Checked_Values('genre-cbx');
-      const selectedPlats = get_Checked_Values('plat-cbx');
-      const minimumRating = $("#slider").slider("value");
-      const gameDescription = $("#gameDescription").val();
-      location.href = "/results?query=form&desc="+gameDescription+"&rating="+minimumRating+"&genres="+selectedGenres+"&platforms="+selectedPlats; //the page to redirect
-    };
-    document.getElementById("random-button").onclick = function () {
-      location.href = "/results?query=random"; //the page to redirect
-    };
-
+    normal_results();
+  });
+  $("#gameRecommendationForm2").submit(function(e) {
+    e.preventDefault();
+    random_results();
   });
 });

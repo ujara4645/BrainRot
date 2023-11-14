@@ -7,7 +7,6 @@ from utilities import search
 
 # Renders the index page
 def index(request):
-    # template = loader.get_template("brain_rot_web/index.html")
     context = {}
     return render(request, 'index.html', context)
 
@@ -22,6 +21,7 @@ def survey(request):
 # Renders the results page according to query parameters
 def results(request):
     # Check if query is from the submit or random button
+    results = {}
     if request.GET["query"] == 'form':
 
         # Get summary and rating from the form
@@ -29,11 +29,9 @@ def results(request):
         rating = ('gte', float(request.GET["rating"]))
         genres = request.GET["genres"].split(' ')[:-1]
         platforms = request.GET["platforms"].split(' ')[:-1]
-        print(genres)
-        print(platforms)
 
         # Execute search
-        hits = search.search(summary=summary, rating=rating, genres=genres, platforms=platforms)
+        results = search.search(summary=summary, rating=rating, genres=genres, platforms=platforms)
     
     elif request.GET["query"] == 'random':
 
@@ -48,17 +46,24 @@ def results(request):
         for i in rand_ids:
             hits.append(search.search_by_id(i))
 
+        for hit in hits:
+            results[hit['Title']] = hit['Title']
+            results[hit['Rating']] = hit['Rating']
+            results[hit['Plays']] = hit['Plays']
+            results[hit['Release Date']] = hit['Release Date']
+            results[hit['Summary']] = hit['Summary']
+            results[hit['Id']] = hit['Id']
+
     # Create a dictionary of results to be passed to the template
     # (this is done because Django templates can't handle the ES response object)
-    results = {}
 
-    for hit in hits:
-        results[hit.title] = {'Title': hit.title,
-                              'Rating': hit.rating,
-                              'Plays': hit.plays,
-                              'Release Date': hit.release_date,
-                              'Summary': hit.summary,
-                              'Id': hit.meta.id}
+    # for hit in hits:
+    #     results[hit.title] = {'Title': hit.title,
+    #                           'Rating': hit.rating,
+    #                           'Plays': hit.plays,
+    #                           'Release Date': hit.release_date,
+    #                           'Summary': hit.summary,
+    #                           'Id': hit.meta.id}
 
     context = {'results': results}
     return render(request, 'results.html', context)
