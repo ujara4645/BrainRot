@@ -25,20 +25,25 @@ $(document).ready(function() {
   function get_Checked_Values(checkboxName) {
     var checkboxes = document.getElementsByName(checkboxName);
     result = [];
+    ret = "";
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked) {
-        result.push(checkboxes[i].value);
+        // result.push(checkboxes[i].value);
+        ret += checkboxes[i].value;
+        if (i != checkboxes.length - 1) {
+          ret += "+";
+        }
       }
     }
-    ret = "";
-    if (result.length > 1) {
-      for (var i = 0; i < result.length - 2; i++) {
-        ret += result[i] + "+";
-      }
-      ret += result[result.length - 1];
-    } else if (result.length == 1) {
-      ret += result[0];
-    }
+    // ret = "";
+    // if (result.length > 1) {
+    //   for (var i = 0; i < result.length - 1; i++) {
+    //     ret += result[i] + "+";
+    //   }
+    //   ret += result[result.length - 1];
+    // } else if (result.length == 1) {
+    //   ret += result[0];
+    // }
     return ret;
   }
 
@@ -46,13 +51,14 @@ $(document).ready(function() {
   $("#gameRecommendationForm").submit(function(e) {
     e.preventDefault();
 
-    const selectedGenres = get_Checked_Values('genre-cbx');
-    const selectedPlats = get_Checked_Values('plat-cbx');
-    const minimumRating = $("#slider").slider("value");
-    const gameDescription = $("#gameDescription").val();
+
 
     // ... Perform further actions such as sending the data to the server ...
     document.getElementById("submit-button").onclick = function () {
+      const selectedGenres = get_Checked_Values('genre-cbx');
+      const selectedPlats = get_Checked_Values('plat-cbx');
+      const minimumRating = $("#slider").slider("value");
+      const gameDescription = $("#gameDescription").val();
       location.href = "/results?query=form&desc="+gameDescription+"&rating="+minimumRating+"&genres="+selectedGenres+"&platforms="+selectedPlats; //the page to redirect
     };
     document.getElementById("random-button").onclick = function () {

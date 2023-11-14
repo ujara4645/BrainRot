@@ -36,6 +36,7 @@
             <ul class="list-group">
                 <li class="list-group-item"><b>{{ title }} ({{ rating }}/5) &emsp;</b></li>
                 <li class="list-group-item">{{ summary }}</li>
+                <li class="list-group-item">Genres: {% for g in genres %}{{ g }}, {% endfor %}</li>
                 <li class="list-group-item">Platforms: {% for p in platforms %}{{ p }}, {% endfor %}</li>
                 <li class="list-group-item">Developers: {% for d in developers %}{{ d }}, {% endfor %}</li>
                 <li class="list-group-item">Plays: {{ plays }}</li>
@@ -62,7 +63,7 @@
       <div class="col-12">
           <ul class="list-group">
           {% for g in similar %}
-            <li class="list-group-item"><b>{{ g.title }} ({{ g.rating }}/5) &emsp;<a href="/results/{{ g.id }}">Details</a></b></li>
+            <li class="list-group-item"><b>{{ g.title }} ({{ g.rating }}/5) &emsp;<a style="color: black;"  href="/results/{{ g.id }}">Details</a></b></li>
             <li class="list-group-item">{{ g.summary }}</li>
           {% endfor %}
           </ul>
